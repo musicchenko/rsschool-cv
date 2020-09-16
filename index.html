@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dmitry Muzychenko - CV</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <hr class="black-long-line"></hr>
+    <header>
+      <div class="header-container">
+        <img id="avatar" src="img/avatar.png" alt="Dmitry Muzychenko"></img>
+        <section id="name-and-profession">
+          <h1 id="fullname">DMITRY<br>MUZYCHENKO</h1>
+          <h3 id="profession">JUNIOR FRONTEND DEVELOPER</h3>
+        </section>
+      </div>
+    </header>
+    <main>
+      <section class="data-wrapper">
+        <ul class="data-list">
+          <li><h1>About me</h1></li>
+          <li><b>Fullname</b><br>Dmitry Muzychenko</li>
+          <li><b>Date of birth</b><br>07/07/2001</li>
+          <li><b>Location</b><br>Belarus, Minsk</li>
+          <li><b>English level</b><br>B1</li>
+          <li><b>Education</b><br>General secondary education</li>
+        </ul>
+        <ul class="data-list">
+          <li><h1>Contacts</h1></li>
+          <li><a lightsaber="green" href="https://t.me/dmdevel" target="_blank">Telegram</a></li>
+          <li><a href="https://web.facebook.com/profile.php?id=100012758914011" target="_blank">Facebook</a></li>
+          <li>nogrevonlight@gmail.com</li>
+        </ul>
+        <ul class="data-list">
+          <li><h1>Skills</h1></li>
+          <li>Vue.js (+Vue Router)</li>
+          <li>Axios</li>
+          <li>native JavaScript</li>
+          <li>jQuery</li>
+          <li>HTML5, CSS3</li>
+          <li>Node.js (+express)</li>
+          <li>MySql</li>
+          <li>MongoDB</li>
+          <li>nginx</li>
+          <li>Git</li>
+        </ul>
+      </section>
+      <h1>Goals</h1>
+      <article>I’m a junior web developer. I want to get team development experience and I always like to learn something new for extending my knowledges. It’s easy for me to contact with new people. Also I can say that I’m easily trained. I made a lot of projects for myself (which will never be released), and some for another people.</article>
+      <h1>Code examples</h1>
+      <article>Method for sending POST requests to the server (link shortener) with using Vue and Axios</article>
+      <section class="listing">
+        <pre>
+        makeShortRequest: function() {
+          if(this.link.trim()) {
+                  let queryAddress = location.href + "generate?link=" + this.link;
+              let resultFunc = function(response) {
+                console.log(response);
+                let temp = localStorage.links ? JSON.parse(localStorage.links) : {};
+                temp[response.data] = this.link;
+                localStorage.links = JSON.stringify(temp);
+                this.$root.$emit('openModal');
+              }
+              Axios.post(queryAddress).then(resultFunc.bind(this));
+            }
+        }</pre>
+      </section>
+      <article>Method for Node.js application which checks is url exists</article>
+      <section class="listing">
+        <pre>
+        app.get('/:link', (req, res) => {
+          database.collection('links').findOne({ 'short_link': req.params.link }, (err, data) => {
+            if(err) {
+              throw err;
+            }
+            res.redirect(data['original_link']);
+          });
+        })</pre>
+      </section>
+      <h1>Experience</h1>
+      <article>
+        Online shop “Belarusachka” <a lightsaber="yellow" href="https://www.belarusachka.by/en/" target="_blank">[Link]</a><br>
+        Stack:
+        <ul>
+          <li>jQuery</li>
+          <li>native JavaScript</li>
+          <li>HTML5, CSS3</li>
+        </ul>
+        Link shortener “Shlink” <a lightsaber="blue" href="https://github.com/musicchenko/shlink" target="_blank">[Source]</a><br>
+        Stack:
+        <ul>
+          <li>Vue.js (+Vue Router)</li>
+          <li>Node.js (+express)</li>
+          <li>MongoDB</li>
+          <li>HTML5, CSS3</li>
+        </ul>
+      </article>
+    </main>
+    <hr class="black-long-line"></hr>
+  </body>
+</html>
